@@ -57,4 +57,11 @@ application {
 artifacts {
     archives fatJar
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
 test.finalizedBy jacocoTestReport

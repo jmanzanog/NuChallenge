@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/jmanzanog/NuChallenge/branch/master/graph/badge.svg?token=DWKEK830S0)](https://codecov.io/gh/jmanzanog/NuChallenge)
 # Nubank Authorizer challenge!
 This project solves the challenge posed in "Code Challenge: Authorizer"
 ## Discussing regarding the technical and architectural decisions

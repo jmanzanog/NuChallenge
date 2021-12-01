@@ -6,11 +6,13 @@ import handler.ValidateActiveAccountHandler;
 import handler.ValidateAlreadyCreatedAccountHandler;
 import handler.ValidateHighFrequencyTxHandler;
 import handler.ValidateInitAccountHandler;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+
 import model.Record;
 import pipeline.Pipeline;
 
@@ -48,9 +50,14 @@ public final class NuAuthorizer {
         pipeline execute for each entered record
          */
         records.stream().reduce(null, (accumRecord, currentRecord) -> {
+            Record nextRecord;
             if (accumRecord != null && accumRecord.getAccount() != null) {
-                currentRecord.setAccount(accumRecord.getAccount());
-                currentRecord.setTxTraces(accumRecord.getTxTraces());
+                nextRecord = new Record(
+                        accumRecord.getAccount(),
+                        currentRecord.getViolations(),
+                        accumRecord.getTxTraces(),
+                        currentRecord.getInput());
+                return pipeline.execute(nextRecord);
             }
             return pipeline.execute(currentRecord);
         });

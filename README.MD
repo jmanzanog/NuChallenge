@@ -90,4 +90,3 @@ When running the previous command, an HTML report generated with the Jacoco tool
 build/reports/jacoco/test/html/index.html
 ```
 
-test
